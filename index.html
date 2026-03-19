@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Saturn Client</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #0b0f1a, #05070d);
+    color: #7df9ff;
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    background: #0d111a;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #1f2a3a;
+}
+
+.sidebar h2 {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #1f2a3a;
+    color: #a8cfff;
+}
+
+.feature {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #141c2b;
+}
+
+.feature:hover {
+    background: #1a2333;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.card {
+    background: #0d111a;
+    border: 1px solid #1f2a3a;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.1);
+}
+
+button {
+    background: #4cc9f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 6px;
+    color: black;
+}
+
+button:hover {
+    background: #3bb3d8;
+}
+
+.output {
+    margin-top: 15px;
+    background: black;
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>🪐 Saturn Client</h2>
+
+    <div class="feature" onclick="loadFeature('Network Scanner')">Network Scanner</div>
+    <div class="feature" onclick="loadFeature('WiFi Analyzer')">WiFi Analyzer</div>
+    <div class="feature" onclick="loadFeature('Port Mapper')">Port Mapper</div>
+    <div class="feature" onclick="loadFeature('Packet Sniffer')">Packet Sniffer</div>
+    <div class="feature" onclick="loadFeature('Firewall Bypass')">Firewall Bypass</div>
+    <div class="feature" onclick="loadFeature('DNS Resolver')">DNS Resolver</div>
+    <div class="feature" onclick="loadFeature('Proxy Chain')">Proxy Chain</div>
+    <div class="feature" onclick="loadFeature('Encryption Tool')">Encryption Tool</div>
+    <div class="feature" onclick="loadFeature('Password Analyzer')">Password Analyzer</div>
+    <div class="feature" onclick="loadFeature('Server Mapper')">Server Mapper</div>
+    <div class="feature" onclick="loadFeature('IP Tracker')">IP Tracker</div>
+    <div class="feature" onclick="loadFeature('Data Decoder')">Data Decoder</div>
+    <div class="feature" onclick="loadFeature('Protocol Scanner')">Protocol Scanner</div>
+    <div class="feature" onclick="loadFeature('Traffic Monitor')">Traffic Monitor</div>
+    <div class="feature" onclick="loadFeature('Signal Booster')">Signal Booster</div>
+    <div class="feature" onclick="loadFeature('Exploit Simulator')">Exploit Simulator</div>
+    <div class="feature" onclick="loadFeature('Access Mapper')">Access Mapper</div>
+    <div class="feature" onclick="loadFeature('Cloud Scanner')">Cloud Scanner</div>
+    <div class="feature" onclick="loadFeature('AI Recon')">AI Recon</div>
+    <div class="feature" onclick="loadFeature('Deep Scan Engine')">Deep Scan Engine</div>
+</div>
+
+<div class="main">
+    <div class="card">
+        <div class="title" id="title">Welcome to Saturn Client</div>
+        <div id="description">
+            Select a module from the left to initialize simulation systems.
+        </div>
+
+        <button onclick="runFake()">Execute Module</button>
+
+        <div class="output" id="output"></div>
+    </div>
+</div>
+
+<script>
+const descriptions = {
+    "Network Scanner": "Advanced multi-layer scanning engine that maps network topology and identifies connected devices across simulated infrastructure layers.",
+    "WiFi Analyzer": "Visualizes wireless signals, detects interference patterns, and simulates optimization strategies.",
+    "Port Mapper": "Simulates identification of open communication ports and associated services.",
+    "Packet Sniffer": "Displays simulated packet flow and protocol inspection results.",
+    "Firewall Bypass": "Analyzes firewall logic and demonstrates routing behavior in a safe simulation.",
+    "DNS Resolver": "Breaks down domain resolution into layered steps across servers.",
+    "Proxy Chain": "Simulates multi-hop proxy routing for anonymized traffic flow.",
+    "Encryption Tool": "Demonstrates encryption/decryption using mock algorithms.",
+    "Password Analyzer": "Simulates password strength evaluation and cracking time estimates.",
+    "Server Mapper": "Visualizes connections between server nodes in a network.",
+    "IP Tracker": "Displays simulated IP routing paths and geolocation.",
+    "Data Decoder": "Transforms encoded data formats into readable outputs.",
+    "Protocol Scanner": "Analyzes protocols and displays simulated vulnerabilities.",
+    "Traffic Monitor": "Shows real-time simulated traffic spikes and flow.",
+    "Signal Booster": "Optimizes simulated bandwidth and signal routing.",
+    "Exploit Simulator": "Demonstrates vulnerability scanning in a safe UI-only environment.",
+    "Access Mapper": "Displays permission layers and system hierarchy.",
+    "Cloud Scanner": "Simulates scanning of cloud infrastructure.",
+    "AI Recon": "Uses AI-like logic to analyze behavior patterns.",
+    "Deep Scan Engine": "Runs a full system scan across all simulated layers."
+};
+
+function loadFeature(name) {
+    document.getElementById("title").innerText = name;
+    document.getElementById("description").innerText = descriptions[name];
+    document.getElementById("output").innerHTML = "";
+}
+
+function runFake() {
+    const output = document.getElementById("output");
+    output.innerHTML = "";
+
+    let lines = [
+        "Initializing Saturn modules...",
+        "Connecting to orbital nodes...",
+        "Decrypting layers...",
+        "Scanning data streams...",
+        "Analyzing results...",
+        "Finalizing sequence...",
+        "Access simulation complete."
+    ];
+
+    let i = 0;
+    let interval = setInterval(() => {
+        if (i < lines.length) {
+            output.innerHTML += "> " + lines[i] + "<br>";
+            output.scrollTop = output.scrollHeight;
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 500);
+}
+</script>
+
+</body>
+</html>
