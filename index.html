@@ -8,27 +8,27 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: radial-gradient(circle, #1a0033, #050010);
-    color: #d6b3ff;
+    background: radial-gradient(circle at top, #2a004f, #0a001a 70%);
+    color: #e6ccff;
     overflow: hidden;
 }
 
-/* 🌌 Stars */
+/* 🌌 Animated stars */
 body::before {
     content:"";
     position:absolute;
     width:200%;
     height:200%;
     background:url("https://www.transparenttextures.com/patterns/stardust.png");
-    animation:stars 100s linear infinite;
-    opacity:0.3;
+    animation:stars 120s linear infinite;
+    opacity:0.25;
 }
 @keyframes stars {
     from{transform:translate(0,0);}
-    to{transform:translate(-600px,-600px);}
+    to{transform:translate(-800px,-800px);}
 }
 
-/* 🔐 Login */
+/* 🔐 AUTH UI */
 #auth {
     position:absolute;
     width:100%;
@@ -39,82 +39,105 @@ body::before {
 }
 
 .box {
-    background:#120022;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 0 20px purple;
+    background: rgba(30,0,60,0.7);
+    padding: 35px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px rgba(180,0,255,0.5);
     text-align:center;
+    border:1px solid rgba(200,100,255,0.3);
+}
+
+.box h2 {
+    margin-bottom: 15px;
 }
 
 input {
     display:block;
-    margin:10px auto;
-    padding:10px;
-    width:200px;
-    background:black;
+    margin:12px auto;
+    padding:12px;
+    width:220px;
+    border-radius:10px;
+    background:#0a001a;
     border:1px solid purple;
     color:white;
+    outline:none;
 }
 
 button {
     padding:10px 20px;
-    background:purple;
-    color:white;
+    background:linear-gradient(90deg,#a855f7,#7e22ce);
     border:none;
+    border-radius:10px;
+    color:white;
     cursor:pointer;
+    margin:5px;
+    transition:0.2s;
 }
 
-/* 🪟 Window */
+button:hover {
+    transform:scale(1.05);
+}
+
+/* 🪟 WINDOW */
 .window {
     position:absolute;
     top:100px;
     left:200px;
-    width:500px;
-    background:#120022;
-    border:1px solid purple;
-    border-radius:10px;
-    box-shadow:0 0 20px purple;
+    width:520px;
+    background: rgba(30,0,60,0.75);
+    border-radius:20px;
+    backdrop-filter: blur(12px);
+    border:1px solid rgba(200,100,255,0.3);
+    box-shadow:0 0 30px rgba(180,0,255,0.4);
 }
 
 .header {
-    padding:10px;
+    padding:12px;
     cursor:move;
-    background:#1f0033;
+    background: rgba(60,0,100,0.5);
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
 }
 
 /* Tabs */
 .tabs {
     display:flex;
-    background:#0a001a;
+    background:#140024;
 }
 .tab {
     padding:10px;
     cursor:pointer;
+    flex:1;
+    text-align:center;
 }
 .tab:hover {
-    background:purple;
+    background:#7e22ce;
 }
 
 /* Output */
 .output {
     background:black;
-    height:150px;
+    height:170px;
     overflow:auto;
     font-family:monospace;
     padding:10px;
-}
-
-/* Progress bar */
-.bar {
-    width:100%;
-    background:#333;
-    height:10px;
+    border-radius:10px;
     margin-top:10px;
 }
+
+/* Progress */
+.bar {
+    width:100%;
+    height:12px;
+    background:#220033;
+    border-radius:10px;
+    overflow:hidden;
+}
 .fill {
-    height:10px;
+    height:12px;
     width:0%;
-    background:purple;
+    background:linear-gradient(90deg,#c084fc,#9333ea);
 }
 
 /* Saturn */
@@ -122,11 +145,11 @@ button {
     position:absolute;
     right:50px;
     top:50px;
-    width:100px;
-    height:100px;
+    width:110px;
+    height:110px;
     border-radius:50%;
     background:radial-gradient(circle,#ffcc99,#663300);
-    animation:spin 20s linear infinite;
+    animation:spin 25s linear infinite;
 }
 @keyframes spin {
     100% {transform:rotate(360deg);}
@@ -136,7 +159,7 @@ button {
 
 <body>
 
-<!-- LOGIN / SIGNUP -->
+<!-- 🔐 LOGIN -->
 <div id="auth">
     <div class="box">
         <h2>🪐 Saturn Client</h2>
@@ -152,15 +175,18 @@ button {
 <div id="app" style="display:none;">
 
 <div class="window" id="win">
-    <div class="header" onmousedown="drag(event)">Saturn System</div>
+    <div class="header" onmousedown="drag(event)">Saturn Client</div>
 
     <div class="tabs">
-        <div class="tab" onclick="tab('core')">Core</div>
-        <div class="tab" onclick="tab('ai')">AI</div>
-        <div class="tab" onclick="tab('scan')">Scanner</div>
+        <div class="tab" onclick="tab('CORE')">Core</div>
+        <div class="tab" onclick="tab('AI')">AI</div>
+        <div class="tab" onclick="tab('SCAN')">Scanner</div>
+        <div class="tab" onclick="tab('ENCRYPT')">Encrypt</div>
+        <div class="tab" onclick="tab('NETWORK')">Network</div>
+        <div class="tab" onclick="tab('CONTROL')">Control</div>
     </div>
 
-    <div style="padding:10px;">
+    <div style="padding:15px;">
         <h3 id="title">System Ready</h3>
 
         <button onclick="run()">Run</button>
@@ -168,7 +194,7 @@ button {
 
         <div class="bar"><div class="fill" id="fill"></div></div>
 
-        <canvas id="graph" width="400" height="100"></canvas>
+        <canvas id="graph" width="420" height="100"></canvas>
 
         <div class="output" id="output"></div>
     </div>
@@ -180,18 +206,14 @@ button {
 
 <script>
 
-/* 🔐 AUTH SYSTEM */
+/* AUTH */
 function signup(){
-    let u = user.value;
-    let p = pass.value;
-    localStorage.setItem(u,p);
+    localStorage.setItem(user.value, pass.value);
     status.innerText = "Account created!";
 }
 
 function login(){
-    let u = user.value;
-    let p = pass.value;
-    if(localStorage.getItem(u) === p){
+    if(localStorage.getItem(user.value) === pass.value){
         status.innerText = "Access Granted";
         setTimeout(()=>{
             auth.style.display="none";
@@ -202,64 +224,60 @@ function login(){
     }
 }
 
-/* 🪟 DRAG */
+/* DRAG */
 function drag(e){
-    let win = document.getElementById("win");
-    document.onmousemove = function(ev){
+    document.onmousemove = (ev)=>{
         win.style.left = ev.clientX + "px";
         win.style.top = ev.clientY + "px";
     }
     document.onmouseup = ()=> document.onmousemove=null;
 }
 
-/* 📑 Tabs */
+/* Tabs */
 function tab(name){
-    title.innerText = name.toUpperCase() + " MODULE";
+    title.innerText = name + " MODULE ACTIVE";
 }
 
-/* 💻 Run simulation */
+/* RUN */
 function run(){
-    let output = document.getElementById("output");
-    let fill = document.getElementById("fill");
-
     output.innerHTML="";
     fill.style.width="0%";
 
-    let steps = [
-        "Initializing...",
-        "Connecting...",
-        "Scanning layers...",
-        "AI analyzing...",
-        "Finalizing..."
+    let steps=[
+        "[ INIT ] Booting Saturn...",
+        "[ LINK ] Connecting nodes...",
+        "[ SCAN ] Mapping layers...",
+        "[ AI ] Running predictions...",
+        "[ SEC ] Encrypting data...",
+        "[ DONE ] Complete"
     ];
 
-    let i=0;
-    let prog=0;
+    let i=0, prog=0;
 
-    let interval = setInterval(()=>{
-        if(i < steps.length){
+    let interval=setInterval(()=>{
+        if(i<steps.length){
             output.innerHTML += steps[i]+"<br>";
-            prog += 20;
-            fill.style.width = prog+"%";
+            prog+=16;
+            fill.style.width=prog+"%";
             i++;
         } else clearInterval(interval);
-    },500);
+    },400);
 }
 
-/* 📊 Graph */
+/* Graph */
 let ctx = graph.getContext("2d");
 setInterval(()=>{
-    ctx.clearRect(0,0,400,100);
+    ctx.clearRect(0,0,420,100);
     ctx.beginPath();
-    for(let i=0;i<400;i++){
-        let y = 50 + Math.sin((i+Date.now()/50)/20)*20;
+    for(let i=0;i<420;i++){
+        let y = 50 + Math.sin((i+Date.now()/40)/15)*20;
         ctx.lineTo(i,y);
     }
-    ctx.strokeStyle="purple";
+    ctx.strokeStyle="#c084fc";
     ctx.stroke();
 },100);
 
-/* 💾 Download */
+/* Download */
 function downloadFake(){
     alert("Downloading Saturn Client...");
 }
