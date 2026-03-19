@@ -9,77 +9,99 @@
 body {
     margin: 0;
     font-family: "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top, #0b0f1a, #05070d);
-    color: #7df9ff;
+    background: radial-gradient(circle at top, #0a0f2a, #02040a);
+    color: #cce7ff;
     display: flex;
+    overflow: hidden;
+}
+
+/* 🌌 Stars background */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    animation: moveStars 60s linear infinite;
+    opacity: 0.2;
+}
+
+@keyframes moveStars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-500px,-500px); }
 }
 
 .sidebar {
-    width: 260px;
-    background: #0d111a;
+    width: 270px;
+    background: rgba(10,15,40,0.95);
     height: 100vh;
-    overflow-y: auto;
-    border-right: 1px solid #1f2a3a;
+    border-right: 1px solid rgba(100,150,255,0.2);
+    backdrop-filter: blur(10px);
+    z-index: 2;
 }
 
 .sidebar h2 {
     text-align: center;
     padding: 20px;
-    border-bottom: 1px solid #1f2a3a;
-    color: #a8cfff;
+    color: #7dbbff;
+    border-bottom: 1px solid rgba(100,150,255,0.2);
 }
 
 .feature {
-    padding: 12px 20px;
+    padding: 14px 20px;
     cursor: pointer;
-    border-bottom: 1px solid #141c2b;
+    border-bottom: 1px solid rgba(100,150,255,0.08);
+    transition: 0.2s;
 }
 
 .feature:hover {
-    background: #1a2333;
+    background: rgba(80,130,255,0.1);
 }
 
 .main {
     flex: 1;
-    padding: 20px;
+    padding: 25px;
+    z-index: 2;
 }
 
 .card {
-    background: #0d111a;
-    border: 1px solid #1f2a3a;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.1);
-}
-
-button {
-    background: #4cc9f0;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 6px;
-    color: black;
-}
-
-button:hover {
-    background: #3bb3d8;
-}
-
-.output {
-    margin-top: 15px;
-    background: black;
-    padding: 10px;
-    height: 200px;
-    overflow-y: auto;
-    font-family: monospace;
-    font-size: 14px;
-    border-radius: 5px;
+    background: rgba(10,15,40,0.85);
+    border: 1px solid rgba(100,150,255,0.2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,150,255,0.2);
 }
 
 .title {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 28px;
+    color: #7dbbff;
+}
+
+button {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    border: none;
+    padding: 12px 22px;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.output {
+    margin-top: 20px;
+    background: black;
+    padding: 15px;
+    height: 260px;
+    overflow-y: auto;
+    font-family: monospace;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #00ffcc;
 }
 </style>
 </head>
@@ -89,68 +111,50 @@ button:hover {
 <div class="sidebar">
     <h2>🪐 Saturn Client</h2>
 
-    <div class="feature" onclick="loadFeature('Network Scanner')">Network Scanner</div>
-    <div class="feature" onclick="loadFeature('WiFi Analyzer')">WiFi Analyzer</div>
-    <div class="feature" onclick="loadFeature('Port Mapper')">Port Mapper</div>
-    <div class="feature" onclick="loadFeature('Packet Sniffer')">Packet Sniffer</div>
-    <div class="feature" onclick="loadFeature('Firewall Bypass')">Firewall Bypass</div>
-    <div class="feature" onclick="loadFeature('DNS Resolver')">DNS Resolver</div>
-    <div class="feature" onclick="loadFeature('Proxy Chain')">Proxy Chain</div>
-    <div class="feature" onclick="loadFeature('Encryption Tool')">Encryption Tool</div>
-    <div class="feature" onclick="loadFeature('Password Analyzer')">Password Analyzer</div>
-    <div class="feature" onclick="loadFeature('Server Mapper')">Server Mapper</div>
-    <div class="feature" onclick="loadFeature('IP Tracker')">IP Tracker</div>
-    <div class="feature" onclick="loadFeature('Data Decoder')">Data Decoder</div>
-    <div class="feature" onclick="loadFeature('Protocol Scanner')">Protocol Scanner</div>
-    <div class="feature" onclick="loadFeature('Traffic Monitor')">Traffic Monitor</div>
-    <div class="feature" onclick="loadFeature('Signal Booster')">Signal Booster</div>
-    <div class="feature" onclick="loadFeature('Exploit Simulator')">Exploit Simulator</div>
-    <div class="feature" onclick="loadFeature('Access Mapper')">Access Mapper</div>
-    <div class="feature" onclick="loadFeature('Cloud Scanner')">Cloud Scanner</div>
-    <div class="feature" onclick="loadFeature('AI Recon')">AI Recon</div>
-    <div class="feature" onclick="loadFeature('Deep Scan Engine')">Deep Scan Engine</div>
+    <div class="feature" onclick="loadFeature('Orbital Network Core')">Orbital Network Core</div>
+    <div class="feature" onclick="loadFeature('Quantum Signal Analyzer')">Quantum Signal Analyzer</div>
+    <div class="feature" onclick="loadFeature('Deep Space Scanner')">Deep Space Scanner</div>
+    <div class="feature" onclick="loadFeature('AI Command Matrix')">AI Command Matrix</div>
+    <div class="feature" onclick="loadFeature('Encryption Nebula')">Encryption Nebula</div>
+    <div class="feature" onclick="loadFeature('Satellite Override System')">Satellite Override System</div>
 </div>
 
 <div class="main">
     <div class="card">
-        <div class="title" id="title">Welcome to Saturn Client</div>
-        <div id="description">
-            Select a module from the left to initialize simulation systems.
-        </div>
+        <div class="title" id="title">Saturn Client Initialized</div>
+        <p id="desc">Select a system module to begin orbital simulation.</p>
 
-        <button onclick="runFake()">Execute Module</button>
+        <button onclick="runFake()">Execute System</button>
 
         <div class="output" id="output"></div>
     </div>
 </div>
 
 <script>
+
 const descriptions = {
-    "Network Scanner": "Advanced multi-layer scanning engine that maps network topology and identifies connected devices across simulated infrastructure layers.",
-    "WiFi Analyzer": "Visualizes wireless signals, detects interference patterns, and simulates optimization strategies.",
-    "Port Mapper": "Simulates identification of open communication ports and associated services.",
-    "Packet Sniffer": "Displays simulated packet flow and protocol inspection results.",
-    "Firewall Bypass": "Analyzes firewall logic and demonstrates routing behavior in a safe simulation.",
-    "DNS Resolver": "Breaks down domain resolution into layered steps across servers.",
-    "Proxy Chain": "Simulates multi-hop proxy routing for anonymized traffic flow.",
-    "Encryption Tool": "Demonstrates encryption/decryption using mock algorithms.",
-    "Password Analyzer": "Simulates password strength evaluation and cracking time estimates.",
-    "Server Mapper": "Visualizes connections between server nodes in a network.",
-    "IP Tracker": "Displays simulated IP routing paths and geolocation.",
-    "Data Decoder": "Transforms encoded data formats into readable outputs.",
-    "Protocol Scanner": "Analyzes protocols and displays simulated vulnerabilities.",
-    "Traffic Monitor": "Shows real-time simulated traffic spikes and flow.",
-    "Signal Booster": "Optimizes simulated bandwidth and signal routing.",
-    "Exploit Simulator": "Demonstrates vulnerability scanning in a safe UI-only environment.",
-    "Access Mapper": "Displays permission layers and system hierarchy.",
-    "Cloud Scanner": "Simulates scanning of cloud infrastructure.",
-    "AI Recon": "Uses AI-like logic to analyze behavior patterns.",
-    "Deep Scan Engine": "Runs a full system scan across all simulated layers."
+"Orbital Network Core":
+"Central command system that maps interconnected orbital nodes, tracking simulated satellite links, routing layers, and distributed system structures across a multi-zone network grid. Includes advanced topology mapping, node clustering, signal rerouting logic, and system stability diagnostics.",
+
+"Quantum Signal Analyzer":
+"Processes simulated quantum-level signals and analyzes interference patterns across multiple spectrums. Detects anomalies, reconstructs fragmented transmissions, and visualizes high-frequency communication flows in a multi-layered data environment.",
+
+"Deep Space Scanner":
+"Performs extended-range scans across deep-space infrastructure layers. Identifies simulated remote endpoints, traces long-distance signal paths, and builds a full-spectrum visualization of external network activity.",
+
+"AI Command Matrix":
+"Advanced AI-driven system that evaluates patterns, predicts system behavior, and dynamically generates simulated command sequences. Includes neural analysis layers, adaptive logic trees, and predictive modeling engines.",
+
+"Encryption Nebula":
+"Simulates complex encryption layers using multi-phase encoding systems. Visualizes encryption flow, key exchanges, and data obfuscation through nebula-style transformation models.",
+
+"Satellite Override System":
+"High-level control interface simulating satellite command override operations. Includes uplink management, signal injection modeling, and orbital positioning control layers."
 };
 
 function loadFeature(name) {
     document.getElementById("title").innerText = name;
-    document.getElementById("description").innerText = descriptions[name];
+    document.getElementById("desc").innerText = descriptions[name];
     document.getElementById("output").innerHTML = "";
 }
 
@@ -159,26 +163,29 @@ function runFake() {
     output.innerHTML = "";
 
     let lines = [
-        "Initializing Saturn modules...",
-        "Connecting to orbital nodes...",
-        "Decrypting layers...",
-        "Scanning data streams...",
-        "Analyzing results...",
-        "Finalizing sequence...",
-        "Access simulation complete."
+        "[ INIT ] Booting Saturn Core...",
+        "[ LINK ] Connecting to orbital satellites...",
+        "[ SYNC ] Synchronizing signal arrays...",
+        "[ SCAN ] Mapping network topology layers...",
+        "[ AI   ] Running predictive analysis...",
+        "[ DATA ] Processing 14,582 data streams...",
+        "[ SEC  ] Applying encryption layers...",
+        "[ SYS  ] Stabilizing system modules...",
+        "[ DONE ] Operation completed successfully."
     ];
 
     let i = 0;
     let interval = setInterval(() => {
         if (i < lines.length) {
-            output.innerHTML += "> " + lines[i] + "<br>";
+            output.innerHTML += lines[i] + "<br>";
             output.scrollTop = output.scrollHeight;
             i++;
         } else {
             clearInterval(interval);
         }
-    }, 500);
+    }, 400);
 }
+
 </script>
 
 </body>
